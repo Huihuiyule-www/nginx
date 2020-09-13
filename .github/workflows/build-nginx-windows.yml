@@ -22,7 +22,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@master
       
-      - name: download 
+      #- name: download 
 
       - name: Setup VS2019
         uses: warrenbuckley/Setup-MSBuild@v1
@@ -83,5 +83,5 @@ jobs:
       - run: cpanm --installdeps .
       - run: prove -lv t
         
-      - name: nmake
+      #- name: nmake
            
