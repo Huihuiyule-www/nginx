@@ -115,7 +115,7 @@ jobs:
         run: |
          dir  /S d:\a\ng*.exe /B
          dir  /S d:\a\*.log /B
-         
+      - run : dir "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin\\"  
       - run: type build.log
         
       - name: gzip
