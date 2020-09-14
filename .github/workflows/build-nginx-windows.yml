@@ -11,7 +11,7 @@ on:
     branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
+jobs:   
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
@@ -19,15 +19,22 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      #
       - uses: actions/checkout@master
-      
+
       #- name: download 
 
-      - name: Setup VS2019
-        uses: warrenbuckley/Setup-MSBuild@v1
-      - run : dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise"
-      - run : dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
-      - run : dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\"
+#      - name: Setup VS2019
+#        uses: warrenbuckley/Setup-MSBuild@v1
+#      - run : dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise"
+#      - run : dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
+#      - run : dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\"
+      #- run : dir "C:\Program Files\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\"
+
+      - name: install perl
+        uses: shogo82148/actions-setup-perl@v1 
+        with:
+          perl-version: '5.32'
 
       #- name: MSBuild
       #  working-directory: src
@@ -39,7 +46,7 @@ jobs:
         run: |
          auto/configure \
           --with-cc=cl \
-          --builddir=objs\
+          --builddir=objs \
           --with-debug \
           --prefix= \
           --with-ipv6  \
@@ -78,19 +85,49 @@ jobs:
           --with-mail_ssl_module \
           --with-stream_ssl_module
 
-      - name: install perl
-        uses: shogo82148/actions-setup-perl@v1 
-        with:
-          perl-version: '5.32'
+
       #- run: cpanm --installdeps .
       #- run: prove -lv t
-      - name: v
+      #- run : cmd set path="C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin;%path%"
+      - name: nmake 
+#        env:
+#         path: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin;%path%"
+        shell: powershell
+        run: |
+          "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin\\nmake.exe -f objs/Makefile"
+     # - name: nmake
+        #shell: cmd
+        #run:  |
+          #set path="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build;%path% "
+          #echo %path%
+         # nmake -f objs/Makefile         
+         # set path="C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin;%path%"
+         # cmd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+      - name: dir nginx
+        run: dir 
+      - run: dir objs
+      - run: dir src
+      - run: type objs/autoconf.err
+      #- run: dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\"
+
+      - name: find nginx.exe log
         shell: cmd
         run: |
-          "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
-          nmake -f objs/Makefile
-      #- name: nmake
-      #  run: nmake -f objs/Makefile
+         dir  /S d:\a\ng*.exe /B
+         dir  /S d:\a\*.log /B
+      - run : dir "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin\\"
+    #  - run: type build.log
+        
+      - name: gzip
+        run:  makecab.exe objs/nginx.exe nginx.zip
+         #
+        
+      - name: Upload to release
+        uses: JasonEtco/upload-to-release@master
+        with:
+          args: nginx.zip application/octet-stream
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
  
            
