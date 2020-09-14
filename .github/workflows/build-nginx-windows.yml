@@ -90,7 +90,7 @@ jobs:
       #- run: prove -lv t
       - name: nmake 
         env:
-         path: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin"
+         path: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin;%path%"
         shell: cmd
         run: |
          # set path="C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin;%path%"
