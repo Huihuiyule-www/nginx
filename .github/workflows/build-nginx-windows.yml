@@ -28,6 +28,8 @@ jobs:
       - run : dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise"
       - run : dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
       - run : dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\"
+      - run : dir "C:\Program Files\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\"
+
 
       #- name: MSBuild
       #  working-directory: src
@@ -94,7 +96,7 @@ jobs:
         run:  |
           set path="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build;%path% "
           echo %path%
-          nmake.exe -f objs/Makefile
+          "C:\Program Files\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\nmake.exe -f objs/Makefile"
       - name: dir nginx
         run: dir 
       - run: dir objs
