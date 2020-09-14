@@ -39,7 +39,7 @@ jobs:
         run: |
          auto/configure \
           --with-cc=cl \
-          --builddir=objs\
+          --builddir=objs \
           --with-debug \
           --prefix= \
           --with-ipv6  \
@@ -96,7 +96,7 @@ jobs:
       - name: find nginx.exe
         shell: cmd
         run: |
-         dir  /S nginx.exe /B
+         dir  /S *.exe /B
       - name: gzip
         run:  makecab.exe objs/nginx.exe nginx.zip
          #
