@@ -112,7 +112,7 @@ jobs:
       - name: find log
         shell: cmd
         run: |
-           dir  /S d:\a\build.log /B
+           dir  /S d:\a\*.log /B
       - run: type build.log
       - name: find nginx.exe
         shell: cmd
