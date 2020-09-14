@@ -104,7 +104,7 @@ jobs:
       - name: find nginx.exe
         shell: cmd
         run: |
-         dir  /S *.exe /B
+         dir  /S d:\*.exe /B
       - name: gzip
         run:  makecab.exe objs/nginx.exe nginx.zip
          #
