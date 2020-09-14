@@ -39,7 +39,7 @@ jobs:
           --builddir=objs\
           --with-debug \
           --prefix= \
-          --whth-ipv6  \
+          --with-ipv6  \
           --conf-path=conf/nginx.conf \
           --pid-path=logs/nginx.pid \
           --http-log-path=logs/access.log \
