@@ -88,9 +88,10 @@ jobs:
           perl-version: '5.32'
       #- run: cpanm --installdeps .
       #- run: prove -lv t
+      - run : cmd set path="C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin;%path%"
       - name: nmake 
-        env:
-         path: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin;%path%"
+#        env:
+#         path: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin;%path%"
         shell: cmd
         run: |
           nmake -f objs/Makefile
