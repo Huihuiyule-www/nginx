@@ -27,8 +27,8 @@ jobs:
         run: cmd echo %path%
       - run: dir "C:\Program Files (x86)\"
       - run: dir "C:\Program Files (x86)\Microsoft Visual Studio 14.0"
-      - run: dir "C:\Program Files (x86)\Microsoft Visual Studio 13.0"
       - run: dir "C:\Program Files (x86)\Microsoft Visual Studio 12.0"
+      - run: dir "C:\Program Files (x86)\Microsoft Visual Studio 11.0"
       - run: dir "C:\Program Files"
 
       # Runs a set of commands using the runners shell
