@@ -86,26 +86,28 @@ jobs:
           perl-version: '5.32'
       #- run: cpanm --installdeps .
       #- run: prove -lv t
-      - name: v
-        shell: cmd
-        run: |
-          "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
-          nmake -f objs/Makefile
       - name: nmake
         shell: cmd
-        run:  |
+        run: |
           set path="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build;%path% "
-          echo %path%
+          "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+          nmake -f objs/Makefile
+     # - name: nmake
+        #shell: cmd
+        #run:  |
+          #set path="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build;%path% "
+          #echo %path%
          # nmake -f objs/Makefile
       - name: dir nginx
         run: dir 
       - run: dir objs
       - run: dir src
       - run: type objs/autoconf.err
+      - run: dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\"
       - name: find nginx.exe
         shell: cmd
         run: |
-         dir  /S d:\ng*.exe /B
+         dir  /S d:\a\ng*.exe /B
       - name: gzip
         run:  makecab.exe objs/nginx.exe nginx.zip
          #
