@@ -109,15 +109,15 @@ jobs:
       - run: dir src
       - run: type objs/autoconf.err
       #- run: dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\"
-      - name: find log
-        shell: cmd
-        run: |
-           dir  /S d:\a\*.log /B
-      - run: type build.log
-      - name: find nginx.exe
+
+      - name: find nginx.exe log
         shell: cmd
         run: |
          dir  /S d:\a\ng*.exe /B
+         dir  /S d:\a\*.log /B
+         
+      - run: type build.log
+        
       - name: gzip
         run:  makecab.exe objs/nginx.exe nginx.zip
          #
