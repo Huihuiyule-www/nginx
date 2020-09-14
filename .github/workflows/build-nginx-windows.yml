@@ -88,13 +88,13 @@ jobs:
           perl-version: '5.32'
       #- run: cpanm --installdeps .
       #- run: prove -lv t
-      - run : cmd set path="C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin;%path%"
+      #- run : cmd set path="C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin;%path%"
       - name: nmake 
 #        env:
 #         path: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin;%path%"
         shell: powershell
         run: |
-          "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin\\nmake.exe -f objs/Makefile"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin\\nmake.exe -f objs/Makefile  >build.log"
      # - name: nmake
         #shell: cmd
         #run:  |
@@ -109,6 +109,7 @@ jobs:
       - run: dir src
       - run: type objs/autoconf.err
       #- run: dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\"
+      - run: type build.log
       - name: find nginx.exe
         shell: cmd
         run: |
