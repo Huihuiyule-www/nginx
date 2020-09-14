@@ -91,7 +91,8 @@ jobs:
           nmake -f objs/Makefile
       - name: gzip
         shell: cmd
-        run: dir  /S nginx.exe /B
+        run: |
+         dir  /S nginx.exe /B &&
          makecab.exe objs/nginx.exe nginx.zip
         
       - name: Upload to release
