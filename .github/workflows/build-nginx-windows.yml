@@ -79,8 +79,10 @@ jobs:
         uses: shogo82148/actions-setup-perl@v1 
         with:
           perl-version: '5.32'
-      - run: cpanm --installdeps .
-      - run: prove -lv t
+      #- run: cpanm --installdeps .
+      #- run: prove -lv t
+      - name: nmake
+        run: nmake -f objs/Makefile
         
  
            
