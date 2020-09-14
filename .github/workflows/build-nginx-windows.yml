@@ -29,8 +29,7 @@ jobs:
 #      - run : dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
 #      - run : dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\"
       #- run : dir "C:\Program Files\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\"
-      - env:
-         path: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin"
+
 
 
       #- name: MSBuild
@@ -38,6 +37,8 @@ jobs:
       #  run: msbuild MyProject.csproj
       
       - name: Setup MSYS2
+        env:
+         path: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin"
         uses: msys2/setup-msys2@v2
       - shell: msys2 {0}
         run: |
