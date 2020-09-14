@@ -96,21 +96,21 @@ jobs:
     #  - run: dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\"
 
     - name: find nginx.exe log
-    shell: cmd
-    run: |
-       dir  /S d:\a\ng*.exe /B
-       dir  /S d:\a\*.log /B
+      shell: cmd
+      run: |
+         dir  /S d:\a\ng*.exe /B
+         dir  /S d:\a\*.log /B
     - run : dir "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin\\"  
     - run: type build.log
         
     - name: gzip
-    run:  makecab.exe objs/nginx.exe nginx.zip
+      run:  makecab.exe objs/nginx.exe nginx.zip
          #
         
     - name: Upload to release
-    uses: JasonEtco/upload-to-release@master
-    with:
-      args: nginx.zip application/octet-stream
+      uses: JasonEtco/upload-to-release@master
+      with:
+        args: nginx.zip application/octet-stream
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
            
