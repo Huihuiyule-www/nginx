@@ -93,15 +93,15 @@ jobs:
          path: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin;%path%"
         shell: cmd
         run: |
-         # set path="C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin;%path%"
-         # cmd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
           nmake -f objs/Makefile
      # - name: nmake
         #shell: cmd
         #run:  |
           #set path="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build;%path% "
           #echo %path%
-         # nmake -f objs/Makefile
+         # nmake -f objs/Makefile         
+         # set path="C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin;%path%"
+         # cmd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
       - name: dir nginx
         run: dir 
       - run: dir objs
