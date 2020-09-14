@@ -21,6 +21,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       #
       - uses: actions/checkout@master
+        env:
+         path: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin"
       #- name: download 
 
 #      - name: Setup VS2019
@@ -37,8 +39,6 @@ jobs:
       #  run: msbuild MyProject.csproj
       
       - name: Setup MSYS2
-        env:
-         path: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin"
         uses: msys2/setup-msys2@v2
       - shell: msys2 {0}
         run: |
