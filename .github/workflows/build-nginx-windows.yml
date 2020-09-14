@@ -94,7 +94,7 @@ jobs:
         run:  |
           set path="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build;%path% "
           echo %path%
-          'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\nmake.exe -f objs/Makefile'
+          nmake.exe -f objs/Makefile
       - name: dir nginx
         run: dir 
       - run: dir objs
