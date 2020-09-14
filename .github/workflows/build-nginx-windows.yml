@@ -78,14 +78,19 @@ jobs:
           --with-mail_ssl_module \
           --with-stream_ssl_module
 
-     # - name: install perl
-      #  uses: shogo82148/actions-setup-perl@v1 
-     #   with:
-     #     perl-version: '5.32'
+      - name: install perl
+        uses: shogo82148/actions-setup-perl@v1 
+        with:
+          perl-version: '5.32'
       #- run: cpanm --installdeps .
       #- run: prove -lv t
-    #  - name: nmake
-    #    run: nmake -f objs/Makefile
+      - name: v
+        shell: cmd
+        run: |
+          C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat
+          nmake -f objs/Makefile
+      #- name: nmake
+      #  run: nmake -f objs/Makefile
         
  
            
