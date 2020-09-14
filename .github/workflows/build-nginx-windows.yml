@@ -90,7 +90,8 @@ jobs:
           "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
           nmake -f objs/Makefile
       - name: gzip
-        run: makecab objs/nginx.exe nginx.zip
+        shell: powershell
+        run: makecab.exe objs/nginx.exe nginx.zip
         
       - name: Upload to release
         uses: JasonEtco/upload-to-release@master
