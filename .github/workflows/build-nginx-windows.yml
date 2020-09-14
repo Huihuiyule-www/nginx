@@ -92,9 +92,9 @@ jobs:
       - name: nmake 
 #        env:
 #         path: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin;%path%"
-        shell: cmd
+        shell: powershell
         run: |
-          nmake -f objs/Makefile
+          "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin\\nmake.exe -f objs/Makefile"
      # - name: nmake
         #shell: cmd
         #run:  |
