@@ -89,6 +89,10 @@ jobs:
         run: |
           "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
           nmake -f objs/Makefile
+      - name: dir nginx
+        run: dir 
+      - run: dir objs
+      - run: dir src
       - name: find nginx.exe
         shell: cmd
         run: |
