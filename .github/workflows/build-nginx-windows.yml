@@ -23,12 +23,14 @@ jobs:
       - uses: actions/checkout@master
       #- name: download 
 
-      - name: Setup VS2019
-        uses: warrenbuckley/Setup-MSBuild@v1
-      - run : dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise"
-      - run : dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
-      - run : dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\"
+#      - name: Setup VS2019
+#        uses: warrenbuckley/Setup-MSBuild@v1
+#      - run : dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise"
+#      - run : dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
+#      - run : dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\"
       #- run : dir "C:\Program Files\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\"
+      - env:
+        path: "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin"
 
 
       #- name: MSBuild
@@ -89,8 +91,8 @@ jobs:
       - name: nmake
         shell: cmd
         run: |
-          set path="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build;%path% "
-          "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+         # set path="C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin;%path%"
+         # cmd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
           nmake -f objs/Makefile
      # - name: nmake
         #shell: cmd
@@ -103,7 +105,7 @@ jobs:
       - run: dir objs
       - run: dir src
       - run: type objs/autoconf.err
-      - run: dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\"
+      #- run: dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\"
       - name: find nginx.exe
         shell: cmd
         run: |
