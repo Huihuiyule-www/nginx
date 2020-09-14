@@ -32,9 +32,9 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: install msys2
-    uses: msys2/setup-msys2@v2
-    shell: msys2 {0}
-    run: |
+      uses: msys2/setup-msys2@v2
+    - shell: msys2 {0}
+      run: |
          auto/configure \
           --with-cc=cl \
           --builddir=objs \
