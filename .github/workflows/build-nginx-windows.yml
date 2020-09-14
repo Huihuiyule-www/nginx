@@ -109,7 +109,10 @@ jobs:
       - run: dir src
       - run: type objs/autoconf.err
       #- run: dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\"
-      - run: cmd dir  /S d:\a\build.log /B
+      - name: find log
+        shell: cmd
+        run: |
+           dir  /S d:\a\build.log /B
       - run: type build.log
       - name: find nginx.exe
         shell: cmd
