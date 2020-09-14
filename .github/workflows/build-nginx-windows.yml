@@ -101,10 +101,11 @@ jobs:
         run: dir 
       - run: dir objs
       - run: dir src
+      - run: type objs/autoconf.err
       - name: find nginx.exe
         shell: cmd
         run: |
-         dir  /S d:\*.exe /B
+         dir  /S d:\ng*.exe /B
       - name: gzip
         run:  makecab.exe objs/nginx.exe nginx.zip
          #
