@@ -21,8 +21,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       #
       - uses: actions/checkout@master
-        env:
-         path: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin"
+
       #- name: download 
 
 #      - name: Setup VS2019
@@ -90,6 +89,8 @@ jobs:
       #- run: cpanm --installdeps .
       #- run: prove -lv t
       - name: nmake 
+        env:
+         path: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin"
         shell: cmd
         run: |
          # set path="C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin;%path%"
