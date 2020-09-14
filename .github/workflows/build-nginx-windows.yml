@@ -33,8 +33,8 @@ jobs:
     steps:
     - name: install msys2
     uses: msys2/setup-msys2@v2
-      - shell: msys2 {0}
-        run: |
+    shell: msys2 {0}
+    run: |
          auto/configure \
           --with-cc=cl \
           --builddir=objs \
@@ -75,8 +75,8 @@ jobs:
           --with-http_ssl_module \
           --with-mail_ssl_module \
           --with-stream_ssl_module
-      env:
-        MY_VAR: Hi there! My name is
+    env:
+      MY_VAR: Hi there! My name is
         
     #  run: |
     #    echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
